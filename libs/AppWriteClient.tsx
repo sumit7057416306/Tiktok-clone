@@ -1,12 +1,11 @@
-NEXT_PUBLIC_APPWRITE_URL='https://cloud.appwrite.io/v1'
-NEXT_PUBLIC_ENDPOINT='65806c0f0a50b1cef715'
-NEXT_PUBLIC_DATABASE_ID='65806da1642c377bb365'
+import { Account, Client, ID, Databases, Query, Storage } from 'appwrite';
 
-NEXT_PUBLIC_COLLECTION_ID_PROFILE='65806e035287c48e49c5'
-NEXT_PUBLIC_COLLECTION_ID_POST='658071f92a793e7f48fd'
-NEXT_PUBLIC_COLLECTION_ID_LIKE='658070d65890a98303f9'
-NEXT_PUBLIC_COLLECTION_ID_COMMENT='658072c77fd6ae8c5687'
+const client = new Client()
+    .setEndpoint(String(process.env.NEXT_PUBLIC_APPWRITE_URL))
+    .setProject(String(process.env.NEXT_PUBLIC_ENDPOINT));
 
-NEXT_PUBLIC_BUCKET_NAME="tiktok-clone"
-NEXT_PUBLIC_BUCKET_ID='658073e5646eb0a3f0ed'
-NEXT_PUBLIC_PLACEHOLDER_DEAFULT_IMAGE_ID='6580743415c0f7d6d007'
+const account = new Account(client);
+const database = new Databases(client);
+const storage = new Storage(client);
+
+export { client, account, database, storage, Query, ID }
